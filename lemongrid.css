@@ -1,0 +1,378 @@
+/*! 
+ * lemongrid.css
+ * Lemongrid v1.0 by n@gu
+
+ * 
+ * Support for 12 column layout and responsive designs
+ *
+ * Thanx to Cameron roll for the 2006 article on power of 960 pixels, lemongrid addresses 960 as well. Starts from 1200 & downwards
+ * http://www.cameronmoll.com/archives/2006/12/gridding_the_960/
+ *
+ * Limitation : IE9 and below will have spotty support only;
+ *
+ * Usage steps below
+ * 1. Include reset files before using this file
+ * 2. layouts should start with container div
+ * 3. define rows
+ * 4. define columns; ensure to have end class for the last column
+ * 5. use spacers for skipping columns
+ * 6. all rows should add upto 12
+ *
+ * Context usage: "JLR HTML5 App demo in a Day" 
+ */
+
+/*!
+ * Change log
+ * V1 : Base code
+ * V1.1 : fix the bug in the grid layout..naming covention fix for all widths
+ * V1.2 : Add Push & Pull features
+ */
+
+/* Start with the basics..will have redundant resets for the sake of completeness*/
+
+
+
+*,
+*:after,
+*:before {
+	margin: 0;
+	padding: 0;
+  	-webkit-box-sizing: border-box; /* Safari fix*/
+       -moz-box-sizing: border-box; /* Mozila fix */
+        -ms-box-sizing: border-box; /* MS fix*/
+            box-sizing: border-box; /* default */
+}
+
+
+
+/*Bringing deliberate clearfix to doubly ensure things*/
+.row:before, .row:after, .clearfix:before, .clearfix:after {
+	content:'';
+	display: table;
+}
+
+.row:after, .clearfix:after{
+	clear:both;
+}
+
+.row, .clearfix {
+	zoom:1;
+}
+
+body{
+	font-size: 100%;
+	line-height: 1.6875; /*Responsive typography: http://www.creativebloq.com/css3/handling-typography-responsive-design-4122794*/
+}
+/*container starts at 1200px*/
+.container{
+	margin:0 auto;
+	margin-top:48px;
+	max-width: 1200px;
+	width:100%;
+	height:372px; /* need to change from 368 to 372 to avoid the bottom white patch on SDK*/
+}
+
+/*responsive images*/
+img{
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*default full width*/
+.fullwidth{
+	width:100%;
+	max-width: 100%;
+}
+
+/*1024 width grid*/
+.width1000{
+	max-width:1000px;
+}
+
+/*960 width grid: PREFERRED grid*/
+.width960{
+	max-width:960px
+}
+
+/*800 width grid*/
+.width800{
+	max-width: 802px;
+}
+
+
+/*640 width grid*/
+.width640{
+	max-width: 640px;
+}
+
+/*320 width grid*/
+.width320{
+	max-width: 320px;
+}
+
+/*Row should be defined within the widths*/
+.row{
+	width:100%;
+	/*margin-bottom:20px;*/
+}
+
+/*Nested row coverage*/
+.row .row {
+	width:auto;
+	margin: 0 -20px;
+}
+
+.column10{
+	width:100%;
+}
+
+.column9{
+	width:90%;
+}
+
+.column8{
+	width:80%;
+}
+
+.column7{
+	width:70%;
+}
+
+.column6{
+	width:60%;
+}
+
+.column5{
+	width:50%;
+}
+
+.column4{
+	width:40%;
+}
+
+.column3{
+	width:30%;
+}
+
+.column2{
+	width:20%;
+}
+
+.column1{
+	width:10%;
+}
+
+/*Always.columns should add upto to 12*/
+
+.column2,.column3,.column4,
+.column5,.column6,.column7,.column8,
+.column9{
+	float:left;
+	/* padding-left:.5%; 
+	padding-right:.5%; */
+	padding-left: 0.26%; /*gutter width jisha */
+	padding-right: 0.26%;
+	min-height: 1px;
+	position:relative;
+	/* background-color:white; */
+}
+/*
+.column1{
+	float:left;
+	padding-left:.25%; 
+	padding-right:.5%;
+	min-height: 1px;
+	position:relative;
+}
+
+.column10{
+	float:left;
+	padding-left:.25%; 
+	padding-right:.5%;
+	min-height: 1px;
+	position:relative;
+}
+
+*/
+/* Push & Pull*/
+
+.pull10{
+	right:100%;
+}
+
+.pull9{
+	right:90%;
+}
+
+.pull8{
+	right:80%;
+}
+
+.pull7{
+	right:70%;
+}
+
+.pull6 {
+	right:60%;
+}
+
+.pull5{
+	right:50%;
+}
+
+.pull4{
+	right:40%;
+}
+
+.pull3{
+	right:30%;
+}
+
+.pull2{
+	right:20%;
+}
+
+.pull1{
+	right:10%;
+}
+
+
+.push10{
+	left:100%;
+}
+
+.push9{
+	left:90%;
+}
+
+.push8{
+	left:80%;
+}
+
+.push7{
+	left:70%;
+}
+
+.push6 {
+	left:60%;
+}
+
+.push5{
+	left:50%;
+}
+
+.push4{
+	left:40%;
+}
+
+.push3{
+	left:30%;
+}
+
+.push2{
+	left:20%;
+}
+
+.push1{
+	left:10%;
+}
+
+
+/*Spacers rather than complicated push and pull: only RTL - right hander bias*/
+.spacer11 {
+	margin-left:91.6667%;
+}
+
+.spacer10 {
+	margin-left: 83.3333%;
+}
+
+.spacer9 {
+	margin-left: 75%;
+}
+
+.spacer8 {
+	margin-left: 66.6667%;
+}
+
+.spacer7 {
+	margin-left: 58.3333%;
+}
+
+.spacer6 {
+	margin-left: 50%;
+}
+
+.spacer5 {
+	margin-left: 41.6667%;
+}
+
+.spacer4 {
+	margin-left: 33.3333%;
+}
+
+.spacer3 {
+	margin-left: 25%;
+}
+
+.spacer2 {
+	margin-left: 16.6667%;
+}
+
+.spacer1 {
+	margin-left: 8.3333%;
+}
+
+.end {
+	float:right!important;
+}
+
+
+
+/*Media Queries part*/
+@media only screen and (max-width: 960px){
+	.row .row .column1, .row .row .column2, .row .row .column3,
+	.row .row .column4, .row .row .column5, .row .row .column6,
+	.row .row .column7, .row .row .column8, .row .row .column9,
+	.row .row .column10, .row .row .column11, .row .row .column12 {
+		width:100%;
+		margin-bottom: 20px;
+	}
+	.row .row > div:last-child{margin-bottom:0 !important}
+}
+
+
+@media handheld, only screen and (max-width:768px), only screen and (max-device-width: 768px) and (orientation:portrait){
+	body{
+		font-size: 90%;
+	}
+	
+	@media handheld, only screen and (max-width:640px), only screen and (max-device-width: 640px) and (orientation:portrait){
+	body{
+		font-size: 75%;
+	}
+	
+	@media handheld, only screen and (max-width:480px), only screen and (max-device-width: 480px) and (orientation:portrait){
+	body{
+		font-size: 60%;
+	}
+	
+	@media handheld, only screen and (max-width:320px), only screen and (max-device-width: 320px) and (orientation:portrait){
+	body{
+		font-size: 50%;
+	}
+	.row {
+		margin-bottom: 0!important;
+	}
+	.column1, .column2, .column3, .column4,
+	.column5, .column6, .column7, .column8,
+	.column9, .column10, .column11, .column12 {
+	/*	width:100%;
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 20px;*/
+	}
+}
